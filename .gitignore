@@ -1,1 +1,4 @@
 venv/
+
+#Do not track the database file.
+src/db.sqlite3
