@@ -1,12 +1,17 @@
 from django.http import JsonResponse
-from api.serializers import TodoListSerializer
-from api.models import TodoList
+from api.serializers import TodoListSerializer, TodoTaskSerializer, TodoTagSerializer
+from api.models import TodoList, TodoTask, TodoTag
 from rest_framework import viewsets, permissions
 
 class TodoListViewSet(viewsets.ModelViewSet):
-    """
-    This viewset automatically provides `list` and `detail` actions.
-    """
     queryset = TodoList.objects.all()
     serializer_class = TodoListSerializer
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+
+
+class TodoTaskViewSet(viewsets.ModelViewSet):
+    queryset = TodoTask.objects.all()
+    serializer_class = TodoTaskSerializer
+
+class TodoTagViewSet(viewsets.ModelViewSet):
+    queryset = TodoTag.objects.all()
+    serializer_class = TodoTagSerializer
