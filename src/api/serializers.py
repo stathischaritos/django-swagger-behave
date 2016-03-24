@@ -38,6 +38,10 @@ class TodoTaskSerializer(serializers.ModelSerializer):
 
     def update(self, task, validated_data):
         tags = validated_data.pop('tags')[0]
+        
+        #Update Task Info. Looks like a hack but I haven't found an easier way to do this.
+        task.__dict__.update(**validated_data)
+        task.save()
 
         #Remove Relation from missing tags.
         for tag in TodoTag.objects.filter(tasks=task):
