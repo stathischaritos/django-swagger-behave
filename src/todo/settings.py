@@ -152,13 +152,13 @@ LOGGING = {
         'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': 'mysite.log',
+            'filename': 'todo.log',
             'formatter': 'verbose'
         },
         'console': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': 'mysite.log',
+            'filename': 'todo.log',
             'formatter': 'verbose'
         },
     },

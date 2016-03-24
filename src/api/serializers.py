@@ -1,20 +1,29 @@
 from rest_framework import serializers
 from api.models import TodoList, TodoTask, TodoTag
-import logging
-logger = logging.getLogger('todo')
+import json
 
-class TodoTagSerializer(serializers.StringRelatedField):
+class TodoTagSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = TodoTag
         fields = ('id', 'name')
 
+
+class TodoTagNestedSerializer(serializers.RelatedField):
+    queryset = TodoTag.objects.all()
+    
     def to_internal_value(self, data):
-        tags = data.split(",")
-        return tags
+        return json.loads(data)
+
+    def to_representation(self, data):
+        return data.name
+
+    class Meta:
+        model = TodoTag
+        fields = ('id','name')
 
 class TodoTaskSerializer(serializers.ModelSerializer):
-    tags = TodoTagSerializer(many=True, required=False)
+    tags = TodoTagNestedSerializer(many=True)
 
     class Meta:
         model = TodoTask
@@ -23,9 +32,13 @@ class TodoTaskSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         tags = validated_data.pop('tags')[0]
         task = TodoTask(**validated_data)
-        for tag in tags:
-            task.tags.add( TodoTag.objects.create(name=tag) )
         task.save()
+
+        for tag in tags:
+            new_tag, created = TodoTag.objects.get_or_create(**tag)
+            new_tag.save()
+            new_tag.tasks.add(task)
+            
         return task
 
 class TodoListSerializer(serializers.ModelSerializer):

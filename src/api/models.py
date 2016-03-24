@@ -3,7 +3,8 @@ from django.db import models
 
 class TodoTag(models.Model):
     name = models.CharField(max_length=30)
-    
+    tasks = models.ManyToManyField('TodoTask', related_name="tags")
+
     def __unicode__(self):
         return self.name
 
@@ -12,7 +13,6 @@ class TodoTask(models.Model):
     details = models.CharField(max_length=100)
     created = models.DateTimeField(auto_now_add=True)
     parentList = models.ForeignKey('TodoList', on_delete=models.CASCADE, related_name="tasks")
-    tags = models.ManyToManyField('TodoTag')
     
     def __unicode__(self):
         return self.title
