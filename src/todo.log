@@ -11480,3 +11480,74 @@ TypeError: <TodoTag: stat> is not JSON serializable
             WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
             ORDER BY name; args=None
 [24/Mar/2016 13:14:43] DEBUG [django.db.backends:89] (0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+[24/Mar/2016 13:16:19] DEBUG [django.db.backends:89] (0.001) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[24/Mar/2016 13:16:19] DEBUG [django.db.backends:89] (0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+[24/Mar/2016 13:17:03] DEBUG [django.db.backends:89] (0.001) SELECT "api_todolist"."id", "api_todolist"."name", "api_todolist"."description", "api_todolist"."created" FROM "api_todolist" WHERE "api_todolist"."id" = 1; args=(1,)
+[24/Mar/2016 13:17:03] ERROR [django.request:284] Internal Server Error: /api/tasks/
+Traceback (most recent call last):
+  File "/home/stathis/dj_bdd_todo/venv/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/stathis/dj_bdd_todo/venv/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/stathis/dj_bdd_todo/venv/local/lib/python2.7/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/stathis/dj_bdd_todo/venv/local/lib/python2.7/site-packages/rest_framework/viewsets.py", line 87, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/stathis/dj_bdd_todo/venv/local/lib/python2.7/site-packages/rest_framework/views.py", line 466, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/stathis/dj_bdd_todo/venv/local/lib/python2.7/site-packages/rest_framework/views.py", line 463, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/stathis/dj_bdd_todo/venv/local/lib/python2.7/site-packages/rest_framework/mixins.py", line 20, in create
+    serializer.is_valid(raise_exception=True)
+  File "/home/stathis/dj_bdd_todo/venv/local/lib/python2.7/site-packages/rest_framework/serializers.py", line 213, in is_valid
+    self._validated_data = self.run_validation(self.initial_data)
+  File "/home/stathis/dj_bdd_todo/venv/local/lib/python2.7/site-packages/rest_framework/serializers.py", line 407, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/stathis/dj_bdd_todo/venv/local/lib/python2.7/site-packages/rest_framework/serializers.py", line 437, in to_internal_value
+    validated_value = field.run_validation(primitive_value)
+  File "/home/stathis/dj_bdd_todo/venv/local/lib/python2.7/site-packages/rest_framework/fields.py", line 482, in run_validation
+    value = self.to_internal_value(data)
+  File "/home/stathis/dj_bdd_todo/venv/local/lib/python2.7/site-packages/rest_framework/relations.py", line 474, in to_internal_value
+    for item in data
+  File "/home/stathis/dj_bdd_todo/src/api/serializers.py", line 16, in to_internal_value
+    return json.loads(data)
+  File "/usr/lib/python2.7/json/__init__.py", line 338, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python2.7/json/decoder.py", line 366, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python2.7/json/decoder.py", line 384, in raw_decode
+    raise ValueError("No JSON object could be decoded")
+ValueError: No JSON object could be decoded
+[24/Mar/2016 13:17:30] DEBUG [django.db.backends:89] (0.001) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[24/Mar/2016 13:17:30] DEBUG [django.db.backends:89] (0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+[24/Mar/2016 13:17:38] DEBUG [django.db.backends:89] (0.001) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[24/Mar/2016 13:17:38] DEBUG [django.db.backends:89] (0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+[24/Mar/2016 13:17:43] DEBUG [django.db.backends:89] (0.001) SELECT "api_todolist"."id", "api_todolist"."name", "api_todolist"."description", "api_todolist"."created" FROM "api_todolist" WHERE "api_todolist"."id" = 1; args=(1,)
+[24/Mar/2016 13:17:43] DEBUG [django.db.backends:89] (0.000) BEGIN; args=None
+[24/Mar/2016 13:17:43] DEBUG [django.db.backends:89] (0.000) INSERT INTO "api_todotask" ("title", "details", "created", "parentList_id") VALUES ('Test', 'test', '2016-03-24 13:17:43.664423', 1); args=[u'Test', u'test', u'2016-03-24 13:17:43.664423', 1]
+[24/Mar/2016 13:17:43] DEBUG [django.db.backends:89] (0.000) SELECT "api_todotag"."id", "api_todotag"."name" FROM "api_todotag" WHERE "api_todotag"."name" = 'fdsafd'; args=(u'fdsafd',)
+[24/Mar/2016 13:17:43] DEBUG [django.db.backends:89] (0.000) BEGIN; args=None
+[24/Mar/2016 13:17:43] DEBUG [django.db.backends:89] (0.000) INSERT INTO "api_todotag" ("name") VALUES ('fdsafd'); args=[u'fdsafd']
+[24/Mar/2016 13:17:44] DEBUG [django.db.backends:89] (0.000) BEGIN; args=None
+[24/Mar/2016 13:17:44] DEBUG [django.db.backends:89] (0.000) UPDATE "api_todotag" SET "name" = 'fdsafd' WHERE "api_todotag"."id" = 3; args=(u'fdsafd', 3)
+[24/Mar/2016 13:17:45] DEBUG [django.db.backends:89] (0.000) BEGIN; args=None
+[24/Mar/2016 13:17:45] DEBUG [django.db.backends:89] (0.000) SELECT "api_todotag_tasks"."todotask_id" FROM "api_todotag_tasks" WHERE ("api_todotag_tasks"."todotask_id" IN (2) AND "api_todotag_tasks"."todotag_id" = 3); args=(2, 3)
+[24/Mar/2016 13:17:45] DEBUG [django.db.backends:89] (0.001) INSERT INTO "api_todotag_tasks" ("todotag_id", "todotask_id") SELECT 3, 2; args=(3, 2)
+[24/Mar/2016 13:17:45] DEBUG [django.db.backends:89] (0.000) SELECT "api_todotag"."id", "api_todotag"."name" FROM "api_todotag" WHERE "api_todotag"."name" = 'fdsfds'; args=(u'fdsfds',)
+[24/Mar/2016 13:17:45] DEBUG [django.db.backends:89] (0.000) BEGIN; args=None
+[24/Mar/2016 13:17:45] DEBUG [django.db.backends:89] (0.000) INSERT INTO "api_todotag" ("name") VALUES ('fdsfds'); args=[u'fdsfds']
+[24/Mar/2016 13:17:45] DEBUG [django.db.backends:89] (0.000) BEGIN; args=None
+[24/Mar/2016 13:17:45] DEBUG [django.db.backends:89] (0.000) UPDATE "api_todotag" SET "name" = 'fdsfds' WHERE "api_todotag"."id" = 4; args=(u'fdsfds', 4)
+[24/Mar/2016 13:17:45] DEBUG [django.db.backends:89] (0.000) BEGIN; args=None
+[24/Mar/2016 13:17:45] DEBUG [django.db.backends:89] (0.000) SELECT "api_todotag_tasks"."todotask_id" FROM "api_todotag_tasks" WHERE ("api_todotag_tasks"."todotask_id" IN (2) AND "api_todotag_tasks"."todotag_id" = 4); args=(2, 4)
+[24/Mar/2016 13:17:45] DEBUG [django.db.backends:89] (0.000) INSERT INTO "api_todotag_tasks" ("todotag_id", "todotask_id") SELECT 4, 2; args=(4, 2)
+[24/Mar/2016 13:17:45] DEBUG [django.db.backends:89] (0.000) SELECT "api_todotag"."id", "api_todotag"."name" FROM "api_todotag" INNER JOIN "api_todotag_tasks" ON ("api_todotag"."id" = "api_todotag_tasks"."todotag_id") WHERE "api_todotag_tasks"."todotask_id" = 2; args=(2,)

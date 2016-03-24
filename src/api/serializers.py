@@ -13,7 +13,7 @@ class TodoTagNestedSerializer(serializers.RelatedField):
     queryset = TodoTag.objects.all()
     
     def to_internal_value(self, data):
-        return json.loads(data)
+        return data.split(",")
 
     def to_representation(self, data):
         return data.name
@@ -35,10 +35,10 @@ class TodoTaskSerializer(serializers.ModelSerializer):
         task.save()
 
         for tag in tags:
-            new_tag, created = TodoTag.objects.get_or_create(**tag)
+            new_tag, created = TodoTag.objects.get_or_create(name=tag)
             new_tag.save()
             new_tag.tasks.add(task)
-            
+
         return task
 
 class TodoListSerializer(serializers.ModelSerializer):
