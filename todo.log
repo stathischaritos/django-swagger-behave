@@ -1,0 +1,219 @@
+[24/Mar/2016 13:19:50] DEBUG [django.db.backends:89] (0.001) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[24/Mar/2016 13:19:50] DEBUG [django.db.backends:89] (0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+[24/Mar/2016 13:20:01] DEBUG [django.db.backends:89] (0.002) SELECT "api_todotag"."id", "api_todotag"."name" FROM "api_todotag"; args=()
+[24/Mar/2016 13:20:01] DEBUG [django.template:927] Exception while resolving variable 'hide_label' in template 'rest_framework/horizontal/input.html'.
+Traceback (most recent call last):
+  File "/home/stathis/dj_bdd_todo/venv/local/lib/python2.7/site-packages/django/template/base.py", line 905, in _resolve_lookup
+    (bit, current))  # missing attribute
+VariableDoesNotExist: Failed lookup for key [hide_label] in u"{u'input_type': u'text', u'template_pack': u'rest_framework/horizontal', u'base_template': u'input.html', u'renderer': <rest_framework.renderers.HTMLFormRenderer object at 0xb4fa55ac>}"
+[24/Mar/2016 13:20:01] DEBUG [django.template:927] Exception while resolving variable 'placeholder' in template 'rest_framework/horizontal/input.html'.
+Traceback (most recent call last):
+  File "/home/stathis/dj_bdd_todo/venv/local/lib/python2.7/site-packages/django/template/base.py", line 905, in _resolve_lookup
+    (bit, current))  # missing attribute
+VariableDoesNotExist: Failed lookup for key [placeholder] in u"{u'input_type': u'text', u'template_pack': u'rest_framework/horizontal', u'base_template': u'input.html', u'renderer': <rest_framework.renderers.HTMLFormRenderer object at 0xb4fa55ac>}"
+[24/Mar/2016 13:20:27] DEBUG [django.db.backends:89] (0.001) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[24/Mar/2016 13:20:27] DEBUG [django.db.backends:89] (0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+[24/Mar/2016 13:20:32] DEBUG [django.db.backends:89] (0.000) SELECT "api_todotag"."id", "api_todotag"."name" FROM "api_todotag"; args=()
+[24/Mar/2016 13:20:32] ERROR [django.request:284] Internal Server Error: /api/tags/
+Traceback (most recent call last):
+  File "/home/stathis/dj_bdd_todo/venv/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/stathis/dj_bdd_todo/venv/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/stathis/dj_bdd_todo/venv/local/lib/python2.7/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/stathis/dj_bdd_todo/venv/local/lib/python2.7/site-packages/rest_framework/viewsets.py", line 87, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/stathis/dj_bdd_todo/venv/local/lib/python2.7/site-packages/rest_framework/views.py", line 466, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/stathis/dj_bdd_todo/venv/local/lib/python2.7/site-packages/rest_framework/views.py", line 463, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/stathis/dj_bdd_todo/venv/local/lib/python2.7/site-packages/rest_framework/mixins.py", line 48, in list
+    return Response(serializer.data)
+  File "/home/stathis/dj_bdd_todo/venv/local/lib/python2.7/site-packages/rest_framework/serializers.py", line 674, in data
+    ret = super(ListSerializer, self).data
+  File "/home/stathis/dj_bdd_todo/venv/local/lib/python2.7/site-packages/rest_framework/serializers.py", line 239, in data
+    self._data = self.to_representation(self.instance)
+  File "/home/stathis/dj_bdd_todo/venv/local/lib/python2.7/site-packages/rest_framework/serializers.py", line 614, in to_representation
+    self.child.to_representation(item) for item in iterable
+  File "/home/stathis/dj_bdd_todo/venv/local/lib/python2.7/site-packages/rest_framework/serializers.py", line 459, in to_representation
+    fields = self._readable_fields
+  File "/home/stathis/dj_bdd_todo/venv/local/lib/python2.7/site-packages/django/utils/functional.py", line 33, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/stathis/dj_bdd_todo/venv/local/lib/python2.7/site-packages/rest_framework/serializers.py", line 353, in _readable_fields
+    field for field in self.fields.values()
+  File "/home/stathis/dj_bdd_todo/venv/local/lib/python2.7/site-packages/rest_framework/serializers.py", line 339, in fields
+    for key, value in self.get_fields().items():
+  File "/home/stathis/dj_bdd_todo/venv/local/lib/python2.7/site-packages/rest_framework/serializers.py", line 919, in get_fields
+    field_names = self.get_field_names(declared_fields, info)
+  File "/home/stathis/dj_bdd_todo/venv/local/lib/python2.7/site-packages/rest_framework/serializers.py", line 1018, in get_field_names
+    serializer_class=self.__class__.__name__
+AssertionError: The field 'tasks' was declared on serializer TodoTagSerializer, but has not been included in the 'fields' option.
+[24/Mar/2016 13:20:49] DEBUG [django.db.backends:89] (0.001) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[24/Mar/2016 13:20:49] DEBUG [django.db.backends:89] (0.003) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+[24/Mar/2016 13:20:52] DEBUG [django.db.backends:89] (0.001) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[24/Mar/2016 13:20:52] DEBUG [django.db.backends:89] (0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+[24/Mar/2016 13:20:55] DEBUG [django.db.backends:89] (0.001) SELECT "api_todotag"."id", "api_todotag"."name" FROM "api_todotag"; args=()
+[24/Mar/2016 13:20:55] DEBUG [django.db.backends:89] (0.000) SELECT "api_todotask"."id", "api_todotask"."title", "api_todotask"."details", "api_todotask"."created", "api_todotask"."parentList_id" FROM "api_todotask" INNER JOIN "api_todotag_tasks" ON ("api_todotask"."id" = "api_todotag_tasks"."todotask_id") WHERE "api_todotag_tasks"."todotag_id" = 1; args=(1,)
+[24/Mar/2016 13:20:55] DEBUG [django.db.backends:89] (0.000) SELECT "api_todotag"."id", "api_todotag"."name" FROM "api_todotag" INNER JOIN "api_todotag_tasks" ON ("api_todotag"."id" = "api_todotag_tasks"."todotag_id") WHERE "api_todotag_tasks"."todotask_id" = 1; args=(1,)
+[24/Mar/2016 13:20:55] DEBUG [django.db.backends:89] (0.000) SELECT "api_todotask"."id", "api_todotask"."title", "api_todotask"."details", "api_todotask"."created", "api_todotask"."parentList_id" FROM "api_todotask" INNER JOIN "api_todotag_tasks" ON ("api_todotask"."id" = "api_todotag_tasks"."todotask_id") WHERE "api_todotag_tasks"."todotag_id" = 2; args=(2,)
+[24/Mar/2016 13:20:55] DEBUG [django.db.backends:89] (0.000) SELECT "api_todotag"."id", "api_todotag"."name" FROM "api_todotag" INNER JOIN "api_todotag_tasks" ON ("api_todotag"."id" = "api_todotag_tasks"."todotag_id") WHERE "api_todotag_tasks"."todotask_id" = 1; args=(1,)
+[24/Mar/2016 13:20:55] DEBUG [django.db.backends:89] (0.000) SELECT "api_todotask"."id", "api_todotask"."title", "api_todotask"."details", "api_todotask"."created", "api_todotask"."parentList_id" FROM "api_todotask" INNER JOIN "api_todotag_tasks" ON ("api_todotask"."id" = "api_todotag_tasks"."todotask_id") WHERE "api_todotag_tasks"."todotag_id" = 3; args=(3,)
+[24/Mar/2016 13:20:55] DEBUG [django.db.backends:89] (0.000) SELECT "api_todotag"."id", "api_todotag"."name" FROM "api_todotag" INNER JOIN "api_todotag_tasks" ON ("api_todotag"."id" = "api_todotag_tasks"."todotag_id") WHERE "api_todotag_tasks"."todotask_id" = 2; args=(2,)
+[24/Mar/2016 13:20:55] DEBUG [django.db.backends:89] (0.000) SELECT "api_todotask"."id", "api_todotask"."title", "api_todotask"."details", "api_todotask"."created", "api_todotask"."parentList_id" FROM "api_todotask" INNER JOIN "api_todotag_tasks" ON ("api_todotask"."id" = "api_todotag_tasks"."todotask_id") WHERE "api_todotag_tasks"."todotag_id" = 4; args=(4,)
+[24/Mar/2016 13:20:55] DEBUG [django.db.backends:89] (0.000) SELECT "api_todotag"."id", "api_todotag"."name" FROM "api_todotag" INNER JOIN "api_todotag_tasks" ON ("api_todotag"."id" = "api_todotag_tasks"."todotag_id") WHERE "api_todotag_tasks"."todotask_id" = 2; args=(2,)
+[24/Mar/2016 13:20:55] DEBUG [django.template:927] Exception while resolving variable 'hide_label' in template 'rest_framework/horizontal/input.html'.
+Traceback (most recent call last):
+  File "/home/stathis/dj_bdd_todo/venv/local/lib/python2.7/site-packages/django/template/base.py", line 905, in _resolve_lookup
+    (bit, current))  # missing attribute
+VariableDoesNotExist: Failed lookup for key [hide_label] in u"{u'input_type': u'text', u'template_pack': u'rest_framework/horizontal', u'base_template': u'input.html', u'renderer': <rest_framework.renderers.HTMLFormRenderer object at 0xb50674cc>}"
+[24/Mar/2016 13:20:55] DEBUG [django.template:927] Exception while resolving variable 'placeholder' in template 'rest_framework/horizontal/input.html'.
+Traceback (most recent call last):
+  File "/home/stathis/dj_bdd_todo/venv/local/lib/python2.7/site-packages/django/template/base.py", line 905, in _resolve_lookup
+    (bit, current))  # missing attribute
+VariableDoesNotExist: Failed lookup for key [placeholder] in u"{u'input_type': u'text', u'template_pack': u'rest_framework/horizontal', u'base_template': u'input.html', u'renderer': <rest_framework.renderers.HTMLFormRenderer object at 0xb50674cc>}"
+[24/Mar/2016 13:31:48] DEBUG [django.db.backends:89] (0.001) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[24/Mar/2016 13:31:48] DEBUG [django.db.backends:89] (0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+[24/Mar/2016 13:32:16] DEBUG [django.db.backends:89] (0.001) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[24/Mar/2016 13:32:16] DEBUG [django.db.backends:89] (0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+[24/Mar/2016 13:32:20] DEBUG [django.db.backends:89] (0.001) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[24/Mar/2016 13:32:20] DEBUG [django.db.backends:89] (0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+[24/Mar/2016 13:32:30] DEBUG [django.db.backends:89] (0.001) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[24/Mar/2016 13:32:30] DEBUG [django.db.backends:89] (0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+[24/Mar/2016 13:32:32] DEBUG [django.db.backends:89] (0.001) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[24/Mar/2016 13:32:32] DEBUG [django.db.backends:89] (0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+[24/Mar/2016 13:32:57] DEBUG [django.db.backends:89] (0.001) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[24/Mar/2016 13:32:57] DEBUG [django.db.backends:89] (0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+[24/Mar/2016 13:33:05] DEBUG [django.db.backends:89] (0.001) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[24/Mar/2016 13:33:05] DEBUG [django.db.backends:89] (0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+[24/Mar/2016 13:33:12] DEBUG [django.db.backends:89] (0.001) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[24/Mar/2016 13:33:12] DEBUG [django.db.backends:89] (0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+[24/Mar/2016 13:40:41] DEBUG [django.db.backends:89] (0.001) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[24/Mar/2016 13:40:41] DEBUG [django.db.backends:89] (0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+[24/Mar/2016 13:46:20] DEBUG [django.db.backends:89] (0.001) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[24/Mar/2016 13:46:20] DEBUG [django.db.backends:89] (0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+[24/Mar/2016 13:46:57] DEBUG [django.db.backends:89] (0.001) SELECT "api_todolist"."id", "api_todolist"."name", "api_todolist"."description", "api_todolist"."created" FROM "api_todolist" WHERE "api_todolist"."id" = 1; args=(1,)
+[24/Mar/2016 13:46:57] DEBUG [django.db.backends:89] (0.000) BEGIN; args=None
+[24/Mar/2016 13:46:57] DEBUG [django.db.backends:89] (0.000) INSERT INTO "api_todotask" ("title", "details", "created", "parentList_id") VALUES ('Test', 'test', '2016-03-24 13:46:57.075586', 1); args=[u'Test', u'test', u'2016-03-24 13:46:57.075586', 1]
+[24/Mar/2016 13:46:57] DEBUG [django.db.backends:89] (0.000) SELECT "api_todotag"."id", "api_todotag"."name" FROM "api_todotag" WHERE "api_todotag"."name" = 'fdafds'; args=(u'fdafds',)
+[24/Mar/2016 13:46:57] DEBUG [django.db.backends:89] (0.000) BEGIN; args=None
+[24/Mar/2016 13:46:57] DEBUG [django.db.backends:89] (0.000) INSERT INTO "api_todotag" ("name") VALUES ('fdafds'); args=[u'fdafds']
+[24/Mar/2016 13:46:57] DEBUG [django.db.backends:89] (0.000) BEGIN; args=None
+[24/Mar/2016 13:46:57] DEBUG [django.db.backends:89] (0.001) UPDATE "api_todotag" SET "name" = 'fdafds' WHERE "api_todotag"."id" = 5; args=(u'fdafds', 5)
+[24/Mar/2016 13:46:57] DEBUG [django.db.backends:89] (0.000) BEGIN; args=None
+[24/Mar/2016 13:46:57] DEBUG [django.db.backends:89] (0.000) SELECT "api_todotag_tasks"."todotask_id" FROM "api_todotag_tasks" WHERE ("api_todotag_tasks"."todotask_id" IN (3) AND "api_todotag_tasks"."todotag_id" = 5); args=(3, 5)
+[24/Mar/2016 13:46:57] DEBUG [django.db.backends:89] (0.000) INSERT INTO "api_todotag_tasks" ("todotag_id", "todotask_id") SELECT 5, 3; args=(5, 3)
+[24/Mar/2016 13:46:57] DEBUG [django.db.backends:89] (0.000) SELECT "api_todotag"."id", "api_todotag"."name" FROM "api_todotag" WHERE "api_todotag"."name" = 'fdasfdsa'; args=(u'fdasfdsa',)
+[24/Mar/2016 13:46:57] DEBUG [django.db.backends:89] (0.000) BEGIN; args=None
+[24/Mar/2016 13:46:57] DEBUG [django.db.backends:89] (0.000) INSERT INTO "api_todotag" ("name") VALUES ('fdasfdsa'); args=[u'fdasfdsa']
+[24/Mar/2016 13:46:57] DEBUG [django.db.backends:89] (0.000) BEGIN; args=None
+[24/Mar/2016 13:46:57] DEBUG [django.db.backends:89] (0.000) UPDATE "api_todotag" SET "name" = 'fdasfdsa' WHERE "api_todotag"."id" = 6; args=(u'fdasfdsa', 6)
+[24/Mar/2016 13:46:57] DEBUG [django.db.backends:89] (0.000) BEGIN; args=None
+[24/Mar/2016 13:46:57] DEBUG [django.db.backends:89] (0.000) SELECT "api_todotag_tasks"."todotask_id" FROM "api_todotag_tasks" WHERE ("api_todotag_tasks"."todotask_id" IN (3) AND "api_todotag_tasks"."todotag_id" = 6); args=(3, 6)
+[24/Mar/2016 13:46:57] DEBUG [django.db.backends:89] (0.001) INSERT INTO "api_todotag_tasks" ("todotag_id", "todotask_id") SELECT 6, 3; args=(6, 3)
+[24/Mar/2016 13:46:58] DEBUG [django.db.backends:89] (0.000) SELECT "api_todotag"."id", "api_todotag"."name" FROM "api_todotag" WHERE "api_todotag"."name" = 'test'; args=(u'test',)
+[24/Mar/2016 13:46:58] DEBUG [django.db.backends:89] (0.000) BEGIN; args=None
+[24/Mar/2016 13:46:58] DEBUG [django.db.backends:89] (0.000) INSERT INTO "api_todotag" ("name") VALUES ('test'); args=[u'test']
+[24/Mar/2016 13:46:58] DEBUG [django.db.backends:89] (0.000) BEGIN; args=None
+[24/Mar/2016 13:46:58] DEBUG [django.db.backends:89] (0.000) UPDATE "api_todotag" SET "name" = 'test' WHERE "api_todotag"."id" = 7; args=(u'test', 7)
+[24/Mar/2016 13:46:58] DEBUG [django.db.backends:89] (0.000) BEGIN; args=None
+[24/Mar/2016 13:46:58] DEBUG [django.db.backends:89] (0.000) SELECT "api_todotag_tasks"."todotask_id" FROM "api_todotag_tasks" WHERE ("api_todotag_tasks"."todotask_id" IN (3) AND "api_todotag_tasks"."todotag_id" = 7); args=(3, 7)
+[24/Mar/2016 13:46:58] DEBUG [django.db.backends:89] (0.001) INSERT INTO "api_todotag_tasks" ("todotag_id", "todotask_id") SELECT 7, 3; args=(7, 3)
+[24/Mar/2016 13:46:58] DEBUG [django.db.backends:89] (0.000) SELECT "api_todotag"."id", "api_todotag"."name" FROM "api_todotag" INNER JOIN "api_todotag_tasks" ON ("api_todotag"."id" = "api_todotag_tasks"."todotag_id") WHERE "api_todotag_tasks"."todotask_id" = 3; args=(3,)
+[24/Mar/2016 13:47:31] DEBUG [django.db.backends:89] (0.001) SELECT "api_todotask"."id", "api_todotask"."title", "api_todotask"."details", "api_todotask"."created", "api_todotask"."parentList_id" FROM "api_todotask" WHERE "api_todotask"."id" = 3; args=(3,)
+[24/Mar/2016 13:47:31] DEBUG [django.db.backends:89] (0.000) SELECT "api_todolist"."id", "api_todolist"."name", "api_todolist"."description", "api_todolist"."created" FROM "api_todolist" WHERE "api_todolist"."id" = 1; args=(1,)
+[24/Mar/2016 13:47:31] DEBUG [django.db.backends:89] (0.000) SELECT "api_todotag"."id", "api_todotag"."name" FROM "api_todotag" INNER JOIN "api_todotag_tasks" ON ("api_todotag"."id" = "api_todotag_tasks"."todotag_id") WHERE "api_todotag_tasks"."todotask_id" = 3; args=(3,)
+[24/Mar/2016 13:47:31] ERROR [django.request:284] Internal Server Error: /api/tasks/3/
+Traceback (most recent call last):
+  File "/home/stathis/dj_bdd_todo/venv/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/stathis/dj_bdd_todo/venv/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/stathis/dj_bdd_todo/venv/local/lib/python2.7/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/stathis/dj_bdd_todo/venv/local/lib/python2.7/site-packages/rest_framework/viewsets.py", line 87, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/stathis/dj_bdd_todo/venv/local/lib/python2.7/site-packages/rest_framework/views.py", line 466, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/stathis/dj_bdd_todo/venv/local/lib/python2.7/site-packages/rest_framework/views.py", line 463, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/stathis/dj_bdd_todo/venv/local/lib/python2.7/site-packages/rest_framework/mixins.py", line 70, in update
+    self.perform_update(serializer)
+  File "/home/stathis/dj_bdd_todo/venv/local/lib/python2.7/site-packages/rest_framework/mixins.py", line 74, in perform_update
+    serializer.save()
+  File "/home/stathis/dj_bdd_todo/venv/local/lib/python2.7/site-packages/rest_framework/serializers.py", line 186, in save
+    self.instance = self.update(self.instance, validated_data)
+  File "/home/stathis/dj_bdd_todo/src/api/serializers.py", line 45, in update
+    tag.remove(task)
+AttributeError: 'TodoTag' object has no attribute 'remove'
+[24/Mar/2016 13:47:42] DEBUG [django.db.backends:89] (0.001) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[24/Mar/2016 13:47:42] DEBUG [django.db.backends:89] (0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+[24/Mar/2016 13:47:45] DEBUG [django.db.backends:89] (0.001) SELECT "api_todotask"."id", "api_todotask"."title", "api_todotask"."details", "api_todotask"."created", "api_todotask"."parentList_id" FROM "api_todotask" WHERE "api_todotask"."id" = 3; args=(3,)
+[24/Mar/2016 13:47:45] DEBUG [django.db.backends:89] (0.000) SELECT "api_todolist"."id", "api_todolist"."name", "api_todolist"."description", "api_todolist"."created" FROM "api_todolist" WHERE "api_todolist"."id" = 1; args=(1,)
+[24/Mar/2016 13:47:45] DEBUG [django.db.backends:89] (0.000) SELECT "api_todotag"."id", "api_todotag"."name" FROM "api_todotag" INNER JOIN "api_todotag_tasks" ON ("api_todotag"."id" = "api_todotag_tasks"."todotag_id") WHERE "api_todotag_tasks"."todotask_id" = 3; args=(3,)
+[24/Mar/2016 13:47:45] DEBUG [django.db.backends:89] (0.000) BEGIN; args=None
+[24/Mar/2016 13:47:45] DEBUG [django.db.backends:89] (0.000) DELETE FROM "api_todotag_tasks" WHERE ("api_todotag_tasks"."todotag_id" = 7 AND "api_todotag_tasks"."todotask_id" IN (3)); args=(7, 3)
+[24/Mar/2016 13:47:45] DEBUG [django.db.backends:89] (0.000) BEGIN; args=None
+[24/Mar/2016 13:47:45] DEBUG [django.db.backends:89] (0.001) UPDATE "api_todotag" SET "name" = 'test' WHERE "api_todotag"."id" = 7; args=(u'test', 7)
+[24/Mar/2016 13:47:45] DEBUG [django.db.backends:89] (0.000) SELECT "api_todotag"."id", "api_todotag"."name" FROM "api_todotag" INNER JOIN "api_todotag_tasks" ON ("api_todotag"."id" = "api_todotag_tasks"."todotag_id") WHERE "api_todotag_tasks"."todotask_id" = 3; args=(3,)
+[24/Mar/2016 13:48:04] DEBUG [django.db.backends:89] (0.001) SELECT "api_todotask"."id", "api_todotask"."title", "api_todotask"."details", "api_todotask"."created", "api_todotask"."parentList_id" FROM "api_todotask" WHERE "api_todotask"."id" = 3; args=(3,)
+[24/Mar/2016 13:48:04] DEBUG [django.db.backends:89] (0.000) SELECT "api_todotag"."id", "api_todotag"."name" FROM "api_todotag" INNER JOIN "api_todotag_tasks" ON ("api_todotag"."id" = "api_todotag_tasks"."todotag_id") WHERE "api_todotag_tasks"."todotask_id" = 3; args=(3,)
+[24/Mar/2016 13:48:16] DEBUG [django.db.backends:89] (0.002) SELECT "api_todotag"."id", "api_todotag"."name" FROM "api_todotag"; args=()
+[24/Mar/2016 13:48:16] DEBUG [django.db.backends:89] (0.000) SELECT "api_todotask"."id", "api_todotask"."title", "api_todotask"."details", "api_todotask"."created", "api_todotask"."parentList_id" FROM "api_todotask" INNER JOIN "api_todotag_tasks" ON ("api_todotask"."id" = "api_todotag_tasks"."todotask_id") WHERE "api_todotag_tasks"."todotag_id" = 1; args=(1,)
+[24/Mar/2016 13:48:16] DEBUG [django.db.backends:89] (0.000) SELECT "api_todotag"."id", "api_todotag"."name" FROM "api_todotag" INNER JOIN "api_todotag_tasks" ON ("api_todotag"."id" = "api_todotag_tasks"."todotag_id") WHERE "api_todotag_tasks"."todotask_id" = 1; args=(1,)
+[24/Mar/2016 13:48:16] DEBUG [django.db.backends:89] (0.000) SELECT "api_todotask"."id", "api_todotask"."title", "api_todotask"."details", "api_todotask"."created", "api_todotask"."parentList_id" FROM "api_todotask" INNER JOIN "api_todotag_tasks" ON ("api_todotask"."id" = "api_todotag_tasks"."todotask_id") WHERE "api_todotag_tasks"."todotag_id" = 2; args=(2,)
+[24/Mar/2016 13:48:16] DEBUG [django.db.backends:89] (0.000) SELECT "api_todotag"."id", "api_todotag"."name" FROM "api_todotag" INNER JOIN "api_todotag_tasks" ON ("api_todotag"."id" = "api_todotag_tasks"."todotag_id") WHERE "api_todotag_tasks"."todotask_id" = 1; args=(1,)
+[24/Mar/2016 13:48:16] DEBUG [django.db.backends:89] (0.000) SELECT "api_todotask"."id", "api_todotask"."title", "api_todotask"."details", "api_todotask"."created", "api_todotask"."parentList_id" FROM "api_todotask" INNER JOIN "api_todotag_tasks" ON ("api_todotask"."id" = "api_todotag_tasks"."todotask_id") WHERE "api_todotag_tasks"."todotag_id" = 3; args=(3,)
+[24/Mar/2016 13:48:16] DEBUG [django.db.backends:89] (0.000) SELECT "api_todotag"."id", "api_todotag"."name" FROM "api_todotag" INNER JOIN "api_todotag_tasks" ON ("api_todotag"."id" = "api_todotag_tasks"."todotag_id") WHERE "api_todotag_tasks"."todotask_id" = 2; args=(2,)
+[24/Mar/2016 13:48:16] DEBUG [django.db.backends:89] (0.000) SELECT "api_todotask"."id", "api_todotask"."title", "api_todotask"."details", "api_todotask"."created", "api_todotask"."parentList_id" FROM "api_todotask" INNER JOIN "api_todotag_tasks" ON ("api_todotask"."id" = "api_todotag_tasks"."todotask_id") WHERE "api_todotag_tasks"."todotag_id" = 4; args=(4,)
+[24/Mar/2016 13:48:16] DEBUG [django.db.backends:89] (0.000) SELECT "api_todotag"."id", "api_todotag"."name" FROM "api_todotag" INNER JOIN "api_todotag_tasks" ON ("api_todotag"."id" = "api_todotag_tasks"."todotag_id") WHERE "api_todotag_tasks"."todotask_id" = 2; args=(2,)
+[24/Mar/2016 13:48:16] DEBUG [django.db.backends:89] (0.000) SELECT "api_todotask"."id", "api_todotask"."title", "api_todotask"."details", "api_todotask"."created", "api_todotask"."parentList_id" FROM "api_todotask" INNER JOIN "api_todotag_tasks" ON ("api_todotask"."id" = "api_todotag_tasks"."todotask_id") WHERE "api_todotag_tasks"."todotag_id" = 5; args=(5,)
+[24/Mar/2016 13:48:16] DEBUG [django.db.backends:89] (0.000) SELECT "api_todotag"."id", "api_todotag"."name" FROM "api_todotag" INNER JOIN "api_todotag_tasks" ON ("api_todotag"."id" = "api_todotag_tasks"."todotag_id") WHERE "api_todotag_tasks"."todotask_id" = 3; args=(3,)
+[24/Mar/2016 13:48:16] DEBUG [django.db.backends:89] (0.000) SELECT "api_todotask"."id", "api_todotask"."title", "api_todotask"."details", "api_todotask"."created", "api_todotask"."parentList_id" FROM "api_todotask" INNER JOIN "api_todotag_tasks" ON ("api_todotask"."id" = "api_todotag_tasks"."todotask_id") WHERE "api_todotag_tasks"."todotag_id" = 6; args=(6,)
+[24/Mar/2016 13:48:16] DEBUG [django.db.backends:89] (0.000) SELECT "api_todotag"."id", "api_todotag"."name" FROM "api_todotag" INNER JOIN "api_todotag_tasks" ON ("api_todotag"."id" = "api_todotag_tasks"."todotag_id") WHERE "api_todotag_tasks"."todotask_id" = 3; args=(3,)
+[24/Mar/2016 13:48:16] DEBUG [django.db.backends:89] (0.000) SELECT "api_todotask"."id", "api_todotask"."title", "api_todotask"."details", "api_todotask"."created", "api_todotask"."parentList_id" FROM "api_todotask" INNER JOIN "api_todotag_tasks" ON ("api_todotask"."id" = "api_todotag_tasks"."todotask_id") WHERE "api_todotag_tasks"."todotag_id" = 7; args=(7,)

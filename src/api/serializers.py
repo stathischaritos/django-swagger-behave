@@ -2,13 +2,7 @@ from rest_framework import serializers
 from api.models import TodoList, TodoTask, TodoTag
 import json
 
-class TodoTagSerializer(serializers.ModelSerializer):
-    
-    class Meta:
-        model = TodoTag
-        fields = ('id', 'name')
-
-
+#Serializer for writable nesting inside a TodoTask
 class TodoTagNestedSerializer(serializers.RelatedField):
     queryset = TodoTag.objects.all()
     
@@ -29,6 +23,7 @@ class TodoTaskSerializer(serializers.ModelSerializer):
         model = TodoTask
         fields = ('id', 'title', 'details', 'parentList', 'created', 'tags')
 
+    #Overriding the .create() method to handle creation of tags.
     def create(self, validated_data):
         tags = validated_data.pop('tags')[0]
         task = TodoTask(**validated_data)
@@ -40,6 +35,33 @@ class TodoTaskSerializer(serializers.ModelSerializer):
             new_tag.tasks.add(task)
 
         return task
+
+    def update(self, task, validated_data):
+        tags = validated_data.pop('tags')[0]
+
+        #Remove Relation from missing tags.
+        for tag in TodoTag.objects.filter(tasks=task):
+            if tag.name not in tags:
+                tag.tasks.remove(task)
+                tag.save()
+            else:
+                tags.remove(tag.name)
+
+        #Create updated Tags.
+        for tag in tags:
+            new_tag, created = TodoTag.objects.get_or_create(name=tag)
+            new_tag.save()
+            new_tag.tasks.add(task)
+
+        return task
+
+
+class TodoTagSerializer(serializers.ModelSerializer):
+    tasks = TodoTaskSerializer(many=True, read_only=True)
+    
+    class Meta:
+        model = TodoTag
+        fields = ('id', 'name', 'tasks')
 
 class TodoListSerializer(serializers.ModelSerializer):
     tasks = TodoTaskSerializer(many=True, read_only=True)
