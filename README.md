@@ -8,7 +8,6 @@ I decided to go with Django as it was in the assignment's "prefered" list and I 
 NOTES:
 ======
 
-    - Django has a very strict way of doing things which could be valuable in very large projects. The rest framework
-    and the automated swagger docs are a big plus and essential to serious web services.
+Django has a very strict way of doing things which could be valuable in very large projects. The rest framework and the automated swagger docs are a big plus and essential to serious web services.
 
-    - Relations with django were a big hastle (most of the time spent for the nested writable many-to-many relation between tasks and tags). Part of it may be due to my inexperience with the framework, but I am positive that these simple relations would not have taken so much time to implement in NodeJS-Express-Mongo - even for a beginner.
+Relations with django were a big hastle (most of the time spent for the nested writable many-to-many relation between tasks and tags). Part of it may be due to my inexperience with the framework, but I am positive that these simple relations would not have taken so much time to implement in NodeJS-Express-Mongo - even for a beginner.
