@@ -17,7 +17,7 @@ class TodoTagNestedSerializer(serializers.RelatedField):
         fields = ('id','name')
 
 class TodoTaskSerializer(serializers.ModelSerializer):
-    tags = TodoTagNestedSerializer(many=True)
+    tags = TodoTagNestedSerializer(many=True, required=False)
 
     class Meta:
         model = TodoTask

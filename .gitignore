@@ -2,3 +2,6 @@ venv/
 
 #Do not track the database file.
 src/db.sqlite3
+todo.log
+src/todo.log
+*.pyc
